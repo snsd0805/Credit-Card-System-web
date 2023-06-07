@@ -32,12 +32,12 @@
                     <p class="post-excerpt">在區塊鏈世代中使用最方便的支付方式，透過具有公信力的 Soulbound Token
                       (SBT)進行信用認證、方便信用評分，直接透過區塊鏈銀行進行消費，QRcode掃完就走</p>
                     <br>
-                    <a href="#" class="button is-info">
+                    <RouterLink to="/signup" class="button is-info">
                       <p>馬上申辦</p>
                       <span class="icon">
                         <i class="fas fa-arrow-right"></i>
                       </span>
-                    </a>
+                    </RouterLink>
                   </div>
 
                 </div>
