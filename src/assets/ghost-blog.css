@@ -77,7 +77,7 @@ hr {
 }
 
 .blog-posts {
-  min-height: 100vh;
+  min-height: 80vh;
   background: #191b1f;
   padding-top: 4rem;
   padding-bottom: 10rem;
