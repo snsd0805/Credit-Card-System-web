@@ -20,18 +20,19 @@ export default {
       const provider = await detectEthereumProvider()
       if (provider) {
         const chainId = await window.ethereum.request({ method: 'eth_chainId' })
-        if (chainId == 0xaa36a7) {
+        console.log(chainId)
+        if (chainId == import.meta.env.VITE_CHAIN_ID) {
           const account = await window.ethereum.request({ method: 'eth_requestAccounts' })
           this.client.address = account[0]
           this.client.linked = true
-          this.msg = 'Success: 已經成功連接 MetaMask，繼續完成 Soulbound Token 設定'
+          this.msg = '已經成功連接 MetaMask，繼續完成 Soulbound Token 設定'
           this.successModalStatus = true
         } else {
-          this.msg = 'ERROR: 你連接的不是 Sepolia 測試網路，目前只接受 Sepolia address'
+          this.msg = '你連接的不是 Sepolia 測試網路，目前只接受 Sepolia address'
           this.warningModalStatus = true
         }
       } else {
-        this.msg = 'ERROR: no Metamask'
+        this.msg = 'no Metamask'
         this.warningModalStatus = true
       }
     }

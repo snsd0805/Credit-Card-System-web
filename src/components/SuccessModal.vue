@@ -24,7 +24,7 @@ export default {
       </header>
       <section class="modal-card-body">
         <!-- Content ... -->
-        <p>{{ successMsg }}</p>
+        <span v-html="successMsg"></span>
       </section>
       <footer class="modal-card-foot">
         <RouterLink :to="link" class="button is-success" @click="$emit('closeModal')">{{ btnName }}</RouterLink>
