@@ -109,23 +109,35 @@ export default {
             </template>
           </tbody>
         </table>
-
       </div>
+      <div class="block">
+        <h1 class="title is-4">警告紀錄</h1>
+        <table class="table is-fullwidth is-striped is-hoverable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>發起預警之銀行</th>
+            </tr>
+          </thead>
+          <tbody>
+            <template v-for="(value, index) of log">
+              <tr>
+                <th>{{ index }}</th>
+                <td>{{ value.bank }}</td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </div>
+
       <div class="block">
         <div class="columns">
 
-          <div class="column is-2 is-offset-4">
-            <button @click="detect" class="button is-primary is-fullwidth is-medium is-outlined">Link to
-              MetaMask</button>
-          </div>
-          <div class="column is-2">
-            <RouterLink to="/" class="button is-danger is-fullwidth is-medium is-outlined">Cancel</RouterLink>
+          <div class="column is-2 is-offset-5">
+            <RouterLink to="/client" class="button is-primary is-fullwidth is-medium is-outlined">確認</RouterLink>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <WarningModal :active="warningModalStatus" :errorMsg="msg" @closeModal="warningModalStatus = false"></WarningModal>
-  <SuccessModal :active="successModalStatus" :successMsg="msg" @closeModal="successModalStatus = false"
-    link="/signup/linksbt" btnName="繼續"></SuccessModal>
 </template>
