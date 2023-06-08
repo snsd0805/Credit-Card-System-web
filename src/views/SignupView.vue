@@ -20,7 +20,8 @@ export default {
       const provider = await detectEthereumProvider()
       if (provider) {
         const chainId = await window.ethereum.request({ method: 'eth_chainId' })
-        if (chainId == 0xaa36a7) {
+        console.log(chainId)
+        if (chainId == import.meta.env.VITE_CHAIN_ID) {
           const account = await window.ethereum.request({ method: 'eth_requestAccounts' })
           this.client.address = account[0]
           this.client.linked = true
