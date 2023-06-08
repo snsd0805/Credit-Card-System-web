@@ -66,6 +66,12 @@
       {
         "indexed": false,
         "internalType": "address",
+        "name": "shop",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
         "name": "bank",
         "type": "address"
       },
@@ -526,6 +532,11 @@
       {
         "internalType": "address",
         "name": "client",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "shop",
         "type": "address"
       },
       {

@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import SignupView from '../views/SignupView.vue'
 import LinkSBTView from '../views/LinkSBTView.vue'
+import CreditView from '../views/CreditView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +21,11 @@ const router = createRouter({
       path: '/signup/linksbt',
       name: 'linksbt',
       component: LinkSBTView
+    },
+    {
+      path: '/signup/credit',
+      name: 'startcredit',
+      component: CreditView
     }
   ]
 })
