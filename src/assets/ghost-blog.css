@@ -39,6 +39,18 @@ hr {
   background: #060606;
   color: white;
 } */
+.panel {
+  background-color: #F0F0F0;
+}
+
+.panel-heading {
+  background-color: #5B5B5B;
+  color: white;
+}
+
+.panel-block {
+  color: black;
+}
 
 .box.is-fullwidth h1.title.is-4{
   color: #060606;
