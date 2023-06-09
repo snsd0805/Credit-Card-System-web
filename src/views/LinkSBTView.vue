@@ -42,6 +42,10 @@ export default {
         try {
           await this.bank.methods.register(this.number).send({ from: this.clientAddr })
           this.successModalStatus = true
+          this.$cookies.set('linked', true)
+          this.$cookies.set('SBTNumber', returnNumber)
+          this.$cookies.set('address', this.clientAddr)
+          
           this.link = '/signup/credit'
           this.msg = '註冊成功！'
         } catch (error) {

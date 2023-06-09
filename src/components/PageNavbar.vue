@@ -1,6 +1,24 @@
 <script>
 export default {
-  name: 'PageNavbar'
+  name: 'PageNavbar',
+  data() {
+    return {
+      linked: false,
+      address: '',
+      msg: "HELLO"
+    }
+  },
+  mounted() {
+    console.log(this.$cookies.isKey('linked'))
+    if (!this.$cookies.isKey('linked')) {
+      this.linked = false
+    } else {
+      this.linked = true
+      this.address = this.$cookies.get('address')
+      console.log(this.address)
+      console.log("Addr: "+this.address)
+    }
+  }
 }
 
 </script>
@@ -31,10 +49,15 @@ export default {
 
             <div class="navbar-end">
               <div class="navbar-item">
-                <div class="buttons">
-                  <RouterLink to="/signup" class="button is-primary is-outlined">Sign up</RouterLink>
-                  <RouterLink to="/login" class="button is-info is-outlined">Log in</RouterLink>
-                </div>
+                <template v-if="!linked">
+                  <div class="buttons">
+                    <RouterLink to="/signup" class="button is-primary is-outlined">Sign up</RouterLink>
+                    <RouterLink to="/login" class="button is-info is-outlined">Log in</RouterLink>
+                  </div>
+                </template>
+                <template v-else>
+                  <button class="button is-info is-outlined is-small is-rounded">{{ 'Hello! ' + address }}</button>
+                </template>
               </div>
             </div>
           </div>
