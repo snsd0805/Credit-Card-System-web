@@ -44,7 +44,7 @@ export default {
       console.log(`Code matched = ${decodedText}`, decodedResult);
       this.scanner.clear()
     },
-    scan() {
+    scan () {
       this.scanner = new Html5QrcodeScanner(
         "reader",
         { fps: 10, qrbox: { width: 250, height: 250 } },
