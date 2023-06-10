@@ -26,7 +26,7 @@ export default {
   },
   async mounted() {
     this.web3 = new Web3(window.ethereum)
-    this.clientAddr = (await this.web3.eth.getAccounts())[0]
+    this.clientAddr = this.$cookies.get('address')
     this.web3.eth.defaultAccount = this.clientAddr
     this.token = new this.web3.eth.Contract(SBT, this.SBTAddress)
 
@@ -141,7 +141,8 @@ export default {
         <div class="columns">
 
           <div class="column is-2 is-offset-5">
-            <RouterLink to="/client" class="button is-primary is-fullwidth is-medium is-outlined">確認</RouterLink>
+            <p class="block">確認完成註冊，請重新登入</p>
+            <RouterLink to="/" class="button is-primary is-fullwidth is-medium is-outlined">確認並完成註冊</RouterLink>
           </div>
         </div>
       </div>

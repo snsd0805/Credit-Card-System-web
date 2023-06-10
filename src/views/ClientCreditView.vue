@@ -36,7 +36,7 @@ export default {
   },
   async mounted() {
     this.web3 = new Web3(window.ethereum)
-    this.clientAddr = (await this.web3.eth.getAccounts())[0]
+    this.clientAddr = this.$cookies.get('address')
     this.web3.eth.defaultAccount = this.clientAddr
     this.token = new this.web3.eth.Contract(SBT, this.SBTAddress)
 
