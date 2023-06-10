@@ -20,7 +20,8 @@ export default {
       web3: null,
       token: null,
       isWaiting: false,
-      log: []
+      log: [],
+      warningLog: []
     }
   },
   async mounted() {
@@ -51,7 +52,13 @@ export default {
         }
       }
     }
-    console.log(this.log)
+
+    var warning = await this.token.getPastEvents("Warning", { fromBlock: 0, toBlock: 'latest', filter: { client: this.clientAddr } })
+    for (let i of warning) {
+      let result = i.returnValues
+      this.warningLog.push(result.bank)
+    }
+    console.log(this.warningLog)
   },
   methods: {
 
@@ -72,7 +79,7 @@ export default {
             <ul>
               <li>我們會根據您提供的 SBT 查詢相關信用紀錄，我們會根據紀錄設定給予的每月額度</li>
               <li>若在前個步驟您 mint 了新的 SBT，代表您不曾擁有過信用紀錄，下表為空。</li>
-              <li>若您不曾擁有過信用交易紀錄，我們提供最低額度 3 ETH/1 month。</li>
+              <li>若您不曾擁有過信用交易紀錄，我們提供最低額度 1 ETH/1 month。</li>
               <li>請確認下表紀錄，我們將依照該紀錄表計算。</li>
             </ul>
           </div>
@@ -120,10 +127,10 @@ export default {
             </tr>
           </thead>
           <tbody>
-            <template v-for="(value, index) of log">
+            <template v-for="(value, index) of warningLog">
               <tr>
                 <th>{{ index }}</th>
-                <td>{{ value.bank }}</td>
+                <td>{{ value }}</td>
               </tr>
             </template>
           </tbody>
