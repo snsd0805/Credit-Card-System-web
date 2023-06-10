@@ -34,6 +34,9 @@ export default {
     }
   },
   async mounted() {
+    if (!this.$cookies.isKey('linked')) {
+      this.$router.push('/')
+    }
     this.web3 = new Web3(window.ethereum)
     this.clientAddr = (await this.web3.eth.getAccounts())[0]
     this.web3.eth.defaultAccount = this.clientAddr

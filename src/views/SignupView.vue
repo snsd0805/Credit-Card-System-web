@@ -7,7 +7,7 @@ import { useClientStore } from '../stores/Client.js'
 
 export default {
   components: { PageTitle, WarningModal, SuccessModal },
-  data () {
+  data() {
     return {
       warningModalStatus: false,
       successModalStatus: false,
@@ -16,7 +16,7 @@ export default {
     }
   },
   methods: {
-    async detect () {
+    async detect() {
       const provider = await detectEthereumProvider()
       if (provider) {
         const chainId = await window.ethereum.request({ method: 'eth_chainId' })
@@ -72,6 +72,7 @@ export default {
       </div>
     </div>
   </section>
-  <WarningModal :active="warningModalStatus" :errorMsg="msg" @closeModal="warningModalStatus=false"></WarningModal>
-  <SuccessModal :active="successModalStatus" :successMsg="msg" @closeModal="successModalStatus=false" link="/signup/linksbt" btnName="繼續"></SuccessModal>
+  <WarningModal :active="warningModalStatus" :errorMsg="msg" @closeModal="warningModalStatus = false"></WarningModal>
+  <SuccessModal :active="successModalStatus" :successMsg="msg" @closeModal="successModalStatus = false"
+    link="/signup/linksbt" btnName="繼續"></SuccessModal>
 </template>

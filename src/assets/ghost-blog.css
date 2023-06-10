@@ -30,6 +30,17 @@ hr {
   background: white;
 }
 
+.svg-container {
+  width: 100%; /* 設定容器寬度，根據需要調整 */
+  height: 50%;
+  padding-bottom: 50%; /* 設定高度，根據需要調整，這裡使用 75% 做為示例 */
+  position: relative;
+}
+
+p.block {
+  color: lightslategray;
+}
+
 /*
 .message-header {
   background: white;
