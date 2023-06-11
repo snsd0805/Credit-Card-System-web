@@ -107,6 +107,23 @@ def shop_check():
     else:
         return jsonify({'status': False})
 
+@app.route('/shop/<address>/products', methods=['GET'])
+def shop_products(address):
+    db = sqlite3.connect(DATABASE)
+    cursor = db.cursor()
+    cursor.execute("SELECT  `products`.`id`, `products`.`name`, `products`.`price`, `products`.`code` FROM `shops`, `products` \
+                   WHERE `shops`.id = `products`.`shop_id`and `shops`.`address`=?", (address, ))
+    result = cursor.fetchall()
+    
+    ans = {'products': {}}
+    for product in result:
+        ans['products'][str(product[3])] = {
+            'id': product[0],
+            'name': product[1],
+            'price': str(product[2]),
+        }
+    return jsonify(ans)
+
 if __name__ == '__main__':
     initDB()
     app.run(host="0.0.0.0")
