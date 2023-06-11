@@ -8,6 +8,7 @@ import ClientInfoView from '../views/ClientInfoView.vue'
 import ClientCreditView from '../views/ClientCreditView.vue'
 import ClientPayView from '../views/ClientPayView.vue'
 import PaymentView from '../views/PaymentView.vue'
+import ShopPayView from '../views/ShopPayView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -56,6 +57,11 @@ const router = createRouter({
       path: '/client/pay/:id',
       name: 'clientpayment',
       component: PaymentView
+    },
+    {
+      path: '/shop/pay',
+      name: 'shoppay',
+      component: ShopPayView
     },
   ]
 })

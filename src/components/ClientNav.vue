@@ -2,14 +2,14 @@
 export default {
   name: 'ClientNav',
   props: ['path'],
-  mounted () {
-    console.log(this.path)
-    this.navCSS[this.path] += ' is-active'
-    console.log(this.navCSS)
+  mounted() {
+    if (this.path in this.navCSS) {
+      this.navCSS[this.path] += ' is-active'
+    }
   },
-  data () {
+  data() {
     return {
-    navCSS:  {
+      navCSS: {
         main: 'panel-block',
         pay: 'panel-block',
         credit: 'panel-block',

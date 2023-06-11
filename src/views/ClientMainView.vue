@@ -30,7 +30,8 @@ export default {
       token: null,
       isWaiting: false,
       log: [],
-      scanner: null
+      scanner: null,
+      isShop: false
     }
   },
   async mounted() {
@@ -40,6 +41,7 @@ export default {
     this.web3 = new Web3(window.ethereum)
     this.clientAddr = this.$cookies.get('address')
     this.web3.eth.defaultAccount = this.clientAddr
+    this.isShop = (this.$cookies.get('isShop') == 'true')
   },
   methods: {
     onScanSuccess(decodedText, decodedResult) {
@@ -47,7 +49,7 @@ export default {
       console.log(`Code matched = ${decodedText}`, decodedResult);
       this.scanner.clear()
     },
-    scan () {
+    scan() {
       this.scanner = new Html5QrcodeScanner(
         "reader",
         { fps: 10, qrbox: { width: 250, height: 250 } },
@@ -96,6 +98,29 @@ export default {
                           <!-- <p class="subtitle">Top tile</p> -->
                         </article>
                       </RouterLink>
+
+                      <template v-if="this.isShop">
+                        <RouterLink to="/shop/pay" class="tile is-child notification is-info">
+                          <article>
+                            <p class="title"><i class="fas fa-history"></i> 店家結帳</p>
+                            <!-- <p class="subtitle">Top tile</p> -->
+                          </article>
+                        </RouterLink>
+                        <RouterLink to="/shop/log" class="tile is-child notification is-info">
+                          <article>
+                            <p class="title"><i class="fas fa-history"></i> 店家收款紀錄</p>
+                            <!-- <p class="subtitle">Top tile</p> -->
+                          </article>
+                        </RouterLink>
+                        <RouterLink to="/shop/products" class="tile is-child notification is-info">
+                          <article>
+                            <p class="title"><i class="fas fa-history"></i> 店家商品管理</p>
+                            <!-- <p class="subtitle">Top tile</p> -->
+                          </article>
+                        </RouterLink>
+                      </template>
+
+
                     </div>
                   </div>
                 </div>

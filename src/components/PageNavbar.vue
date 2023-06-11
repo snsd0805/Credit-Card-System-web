@@ -44,6 +44,15 @@ export default {
           this.web3.eth.defaultAccount = clientAddr
           var returnNumber = await token.methods.getSBTNumber(clientAddr).call({from: clientAddr})
           if (returnNumber != 0){
+            var result = await fetch(import.meta.env.VITE_BACKEND_PREFIX+"/shop/check", {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({'address': clientAddr})
+            })
+            var result = await result.json()
+            this.$cookies.set('isShop', result.status)
             this.$cookies.set('address', clientAddr)
             this.$cookies.set('linked', true)
             this.$cookies.set('SBTNumber', returnNumber)
@@ -71,6 +80,7 @@ export default {
       this.$cookies.remove('linked')
       this.$cookies.remove('address')
       this.$cookies.remove('SBTNumber')
+      this.$cookies.remove('shop')
       this.$router.push('/')
     }
   }

@@ -8,6 +8,7 @@ import WarningModal from '../components/WarningModal.vue'
 import SuccessModal from '../components/SuccessModal.vue'
 import { useClientStore } from '../stores/Client.js'
 import ClientNav from '../components/ClientNav.vue'
+import ShopNav from '../components/ShopNav.vue'
 
 // To use Html5QrcodeScanner (more info below)
 import { Html5QrcodeScanner } from "html5-qrcode";
@@ -17,7 +18,7 @@ import { Html5Qrcode } from "html5-qrcode";
 
 
 export default {
-  components: { PageTitle, WarningModal, SuccessModal, ClientNav },
+  components: { PageTitle, WarningModal, SuccessModal, ClientNav, ShopNav },
   data() {
     return {
       SBTAddress: import.meta.env.VITE_SBT_ADDR,
@@ -82,6 +83,10 @@ export default {
       <div class="columns">
         <div class="column is-2">
           <ClientNav path="info"></ClientNav>
+          <template v-if="this.$cookies.get('isShop') == 'true'">
+            <ShopNav path="info"></ShopNav>
+          </template>
+
         </div>
         <div class="column">
           <div class="container">
@@ -98,7 +103,7 @@ export default {
                   </tr>
                   <tr>
                     <th>目前信用額度：</th>
-                    <td>{{ this.credit }} ETH (尚可使用 {{ this.credit-this.arrear }} ETH)</td>
+                    <td>{{ this.credit }} ETH (尚可使用 {{ this.credit - this.arrear }} ETH)</td>
                     <!-- <td>{{ this.clientAddr.slice(0, 8)+"..."+this.clientAddr.slice(33, 42) }}</td> -->
                   </tr>
                   <tr>
@@ -116,7 +121,8 @@ export default {
                   </tr>
                   <tr>
                     <th>Soulbound Token NFT 證書：</th>
-                    <td>{{ picName }}<div class="block is-fullwidth" v-html="pic"></div></td>
+                    <td>{{ picName }}<div class="block is-fullwidth" v-html="pic"></div>
+                    </td>
                   </tr>
                 </tbody>
               </table>

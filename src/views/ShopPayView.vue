@@ -37,15 +37,6 @@ export default {
     this.web3.eth.defaultAccount = this.clientAddr
     this.token = new this.web3.eth.Contract(SBT, this.SBTAddress)
     this.bank = new this.web3.eth.Contract(Bank, this.BankAddress)
-
-    // get credit
-    this.credit = await this.bank.methods.getCredit(this.clientAddr).call()
-    this.credit = await this.web3.utils.fromWei(this.credit, 'ether')
-
-    // get arrear
-    this.arrear = await this.bank.methods.getArrear(this.clientAddr).call()
-    this.arrear = await this.web3.utils.fromWei(this.arrear, 'ether')
-
   },
   methods: {
     onScanSuccess(decodedText, decodedResult) {
@@ -71,20 +62,15 @@ export default {
     <div class="container">
       <div class="columns">
         <div class="column is-2">
-          <ClientNav path="pay"></ClientNav>
-          <template v-if="this.$cookies.get('isShop') == 'true'">
-            <ShopNav path="pay"></ShopNav>
-          </template>
-
+          <ClientNav path="shoppay"></ClientNav>
+          <ShopNav path="shoppay"></ShopNav>
         </div>
         <div class="column">
           <div class="container">
             <div class="block">
-              <PageTitle title="掃描支付" subtitle="掃描店家給的訂單 QRcode 進行支付"></PageTitle>
+              <PageTitle title="店家收款" subtitle="掃描商品條碼以加入收款單"></PageTitle>
             </div>
             <div class="block">
-              <p class="block">使用地址：{{ this.clientAddr }}</p>
-              <p class="block">剩餘額度：{{ this.credit-this.arrear }} ETH (總額度 {{ this.credit }} ETH )</p>
               
             </div>
             <div class="block">

@@ -94,6 +94,18 @@ def get_order(id):
 
     return jsonify(ans)
 
+@app.route('/shop/check', methods=['POST'])
+def shop_check():
+    address = request.get_json()['address']
+    db = sqlite3.connect(DATABASE)
+    cursor = db.cursor()
+    cursor.execute("SELECT COUNT(*) FROM `shops` WHERE `address`=?", (address, ))
+    result = cursor.fetchone()[0]
+    print(result, type(result))
+    if result != 0:
+        return jsonify({'status': True})
+    else:
+        return jsonify({'status': False})
 
 if __name__ == '__main__':
     initDB()

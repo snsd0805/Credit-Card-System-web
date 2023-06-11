@@ -7,6 +7,7 @@ import WarningModal from '../components/WarningModal.vue'
 import SuccessModal from '../components/SuccessModal.vue'
 import { useClientStore } from '../stores/Client.js'
 import ClientNav from '../components/ClientNav.vue'
+import ShopNav from '../components/ShopNav.vue'
 
 // To use Html5QrcodeScanner (more info below)
 import { Html5QrcodeScanner } from "html5-qrcode";
@@ -17,7 +18,7 @@ import { Html5Qrcode } from "html5-qrcode";
 
 
 export default {
-  components: { PageTitle, WarningModal, SuccessModal, ClientNav },
+  components: { PageTitle, WarningModal, SuccessModal, ClientNav, ShopNav },
   data() {
     return {
       SBTAddress: import.meta.env.VITE_SBT_ADDR,
@@ -94,6 +95,10 @@ export default {
       <div class="columns">
         <div class="column is-2">
           <ClientNav path="credit"></ClientNav>
+          <template v-if="this.$cookies.get('isShop') == 'true'">
+            <ShopNav path="credit"></ShopNav>
+          </template>
+
         </div>
         <div class="column">
           <div class="container">
