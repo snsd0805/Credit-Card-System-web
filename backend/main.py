@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
 import sqlite3
 import os
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 DATABASE = './main.db'
 
@@ -77,7 +79,7 @@ def get_order(id):
     for product in products:
         ans['products'].append({
             'name': product[0],
-            'price': product[1],
+            'price': str(product[1]),
             'count': product[2]
         })
 
@@ -88,11 +90,11 @@ def get_order(id):
         'name': result[1],
         'address': result[0]
     }
-    ans['amount'] = result[2]
+    ans['amount'] = str(result[2])
 
     return jsonify(ans)
 
 
 if __name__ == '__main__':
     initDB()
-    app.run()
+    app.run(host="0.0.0.0")
