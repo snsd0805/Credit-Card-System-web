@@ -84,15 +84,34 @@ def get_order(id):
         })
 
     # shop name
-    cursor.execute("SELECT `address`, `name`, `amount` FROM `shops`, `orders` WHERE `orders`.`shop_id`=`shops`.`id` and `orders`.`id`= ?", (id, ))
+    cursor.execute("SELECT `address`, `name`, `amount`, `client_addr` FROM `shops`, `orders` WHERE `orders`.`shop_id`=`shops`.`id` and `orders`.`id`= ?", (id, ))
     result = cursor.fetchone()
     ans['shop'] = {
         'name': result[1],
         'address': result[0]
     }
     ans['amount'] = str(result[2])
+    ans['client'] = result[3]
 
     return jsonify(ans)
+
+@app.route('/order/<id>', methods=['PATCH'])
+def update_client(id):
+    client = request.get_json()['client']
+
+    db = sqlite3.connect(DATABASE)
+    cursor = db.cursor()
+    
+    ans = {}
+
+    # products
+    cursor.execute("UPDATE `orders` SET `client_addr`=? WHERE `id`=?", (client, id ))
+
+    db.commit()
+    db.close()
+
+    return jsonify({'status': 'OK'})
+
 
 @app.route('/shop/check', methods=['POST'])
 def shop_check():
