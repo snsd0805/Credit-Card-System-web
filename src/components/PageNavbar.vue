@@ -94,9 +94,16 @@ export default {
       <div class="container">
         <nav class="navbar" role="navigation" aria-label="main navigation">
           <div class="navbar-brand">
-            <a class="navbar-item" href="https://bulma.io">
-              <img src="@/assets/NCNU_Bank.png" width="112" height="28">
-            </a>
+            <template v-if="this.linked">
+              <RouterLink class="navbar-item" to="/client">
+                <img src="@/assets/NCNU_Bank.png" width="112" height="28">
+              </RouterLink>
+            </template>
+            <template v-else>
+              <RouterLink class="navbar-item" to="/">
+                <img src="@/assets/NCNU_Bank.png" width="112" height="28">
+              </RouterLink>
+            </template>
 
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
               data-target="navbarBasicExample">
@@ -108,8 +115,11 @@ export default {
 
           <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-              <RouterLink to="/" class="navbar-item">Home</RouterLink>
-              <RouterLink to="/document" class="navbar-item">Documentation</RouterLink>
+              <template v-if="this.linked">
+              <RouterLink class="navbar-item" to="/client">
+                  使用者選項
+                </RouterLink>
+              </template>
             </div>
 
             <div class="navbar-end">
