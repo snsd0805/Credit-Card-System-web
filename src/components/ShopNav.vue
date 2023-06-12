@@ -47,7 +47,7 @@ export default {
         <p>店家收款紀錄</p>
       </template>
     </RouterLink>
-    <RouterLink to="/shop/products" :class="this.navCSS['shopproducts']">
+    <RouterLink to="/shop/manage" :class="this.navCSS['shopproducts']">
       <span class="panel-icon">
         <i class="fas fa-book" aria-hidden="true"></i>
       </span>

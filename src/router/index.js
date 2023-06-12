@@ -14,6 +14,7 @@ import ShopLogView from '../views/ShopLogView.vue'
 import OrderView from '../views/OrderView.vue'
 import ClientLogView from '../views/ClientLogView.vue'
 import ClientRepayView from '../views/ClientRepayView.vue'
+import ShopManageView from '../views/ShopManageView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -92,6 +93,11 @@ const router = createRouter({
       path: '/client/repay',
       name: 'repay',
       component: ClientRepayView
+    },
+    {
+      path: '/shop/manage',
+      name: 'shopmanage',
+      component: ShopManageView
     },
   ]
 })

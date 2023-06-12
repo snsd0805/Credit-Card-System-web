@@ -41,6 +41,9 @@ p.block {
   color: lightslategray;
 }
 
+.message.is-info{
+  background-color: #191b1f;
+}
 /*
 .message-header {
   background: white;

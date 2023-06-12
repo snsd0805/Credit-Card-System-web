@@ -143,6 +143,25 @@ def shop_products(address):
         }
     return jsonify(ans)
 
+@app.route('/shop/<address>/products', methods=['POST'])
+def add_products(address):
+    product = request.get_json()['product']
+    print(product['name'])
+    print(product['code'])
+    print(product['price'])
+
+    db = sqlite3.connect(DATABASE)
+    cursor = db.cursor()
+    cursor.execute("SELECT `id` FROM `shops` WHERE `address`=?", (address, ))
+    shop_id = cursor.fetchone()[0]
+
+    cursor.execute("INSERT INTO `products`(`id`,`shop_id`,`name`,`code`, `price`) VALUES (NULL,?,?,?,?);", \
+                   (shop_id, product['name'], product['code'], product['price']))
+    db.commit()
+    db.close()
+    return jsonify({'status': 'OK'})
+
+
 if __name__ == '__main__':
     initDB()
     app.run(host="0.0.0.0")

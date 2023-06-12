@@ -133,7 +133,7 @@ export default {
                             <!-- <p class="subtitle">Top tile</p> -->
                           </article>
                         </RouterLink>
-                        <RouterLink to="/shop/products" class="tile is-child notification is-info">
+                        <RouterLink to="/shop/manage" class="tile is-child notification is-info">
                           <article>
                             <p class="title"><i class="fas fa-box-open"></i> 店家商品管理</p>
                             <!-- <p class="subtitle">Top tile</p> -->
