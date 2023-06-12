@@ -178,5 +178,5 @@ export default {
   </section>
   <WarningModal :active="warningModalStatus" :errorMsg="msg" @closeModal="warningModalStatus = false"></WarningModal>
   <SuccessModal :active="successModalStatus" :successMsg="msg" @closeModal="successModalStatus = false"
-    :link="`/shop/pay/${this.orderId}`" btnName="繼續"></SuccessModal>
+    :link="`/client/info`" btnName="繼續"></SuccessModal>
 </template>
