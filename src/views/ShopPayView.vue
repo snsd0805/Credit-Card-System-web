@@ -65,13 +65,18 @@ export default {
     onScanSuccess(decodedText, decodedResult) {
       // handle the scanned code as you like, for example:
       console.log(`Code matched = ${decodedText}`, decodedResult);
-      var product = this.products[decodedText]
-      this.productCar.push({
-        'name': product['name'],
-        'id': product['id'],
-        'price': product['price'],
-        'count': 1
-      })
+      if (decodedText in this.products){
+        var product = this.products[decodedText]
+        this.productCar.push({
+          'name': product['name'],
+          'id': product['id'],
+          'price': product['price'],
+          'count': 1
+        })
+      } else {
+        this.msg = "商品列表中沒有這項商品："+decodedText
+        this.warningModalStatus = true
+      }
       this.scanner.clear()
     },
     scan() {
@@ -130,7 +135,7 @@ export default {
             </div>
             <div class="block">
               <button class="button is-success is-outlined is-large" @click="scan">掃描商品條碼</button>
-              <div id="reader" width="300px"></div>
+              <div id="reader" width="200px"></div>
             </div>
             <div class="block">
               <table class="table is-fullwidth">
