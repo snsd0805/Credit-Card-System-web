@@ -9,6 +9,7 @@ import ClientCreditView from '../views/ClientCreditView.vue'
 import ClientPayView from '../views/ClientPayView.vue'
 import PaymentView from '../views/PaymentView.vue'
 import ShopPayView from '../views/ShopPayView.vue'
+import ShopPayQRcodeView from '../views/ShopPayQRcodeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -62,6 +63,11 @@ const router = createRouter({
       path: '/shop/pay',
       name: 'shoppay',
       component: ShopPayView
+    },
+    {
+      path: '/shop/pay/:id',
+      name: 'shopayqrcode',
+      component: ShopPayQRcodeView
     },
   ]
 })

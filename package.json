@@ -11,6 +11,8 @@
     "@metamask/detect-provider": "^2.0.0",
     "html5-qrcode": "^2.3.8",
     "pinia": "^2.0.36",
+    "qrcode": "^1.5.3",
+    "qrcode-vue": "^1.2.0",
     "vue": "^3.3.2",
     "vue-cookies": "^1.8.3",
     "vue-router": "^4.2.0",
