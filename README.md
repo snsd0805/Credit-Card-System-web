@@ -8,6 +8,7 @@ However, many functions have not been fully implemented, and there are still num
 
 Additionally, You can find smart contract [here](https://github.com/snsd0805/Credit-Card-System-smartcontract)
 
+![](img/Screenshot_20230612_205455.png)
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
@@ -65,3 +66,8 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 After setting up the frontend and backend servers, you can open your browser and access the frontend page.
 
 Once the page is loaded, you can connect your MetaMask wallet and proceed to register and log in to the application.
+
+## Some Demo Screenshots
+![](img/Screenshot_20230612_225920.png)
+![](img/Screenshot_20230612_230551.png)
+![](img/Screenshot_20230612_230948.png)
