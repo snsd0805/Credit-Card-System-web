@@ -1,6 +1,12 @@
-# Final-web
+# Credit-Card-System-web
 
-This template should help get you started developing with Vue 3 in Vite.
+It's final project for 1112 NCNU CSIE "Principles and Practice of Blockchains"
+
+We have implemented a Crypto Credit Card System, and this repository focuses on the web interface part.
+
+However, many functions have not been fully implemented, and there are still numerous security issues that need to be addressed.
+
+Additionally, You can find smart contract [here]()
 
 ## Recommended IDE Setup
 
@@ -10,20 +16,52 @@ This template should help get you started developing with Vue 3 in Vite.
 
 See [Vite Configuration Reference](https://vitejs.dev/config/).
 
-## Project Setup
+## Project Setup (Frontend)
 
-```sh
-npm install
-```
+1. Deploy the contracts in the [smart contract repo]()
+2. clone this repo
+    ```
+    git clone $THIS_REPO_LINK
+    ```
+3. Install the project dependencies
+    ```
+    cd Credit-Card-System-web
+    npm install
+    ```
+4. Copy `.env.example` to `.env`, and edit your configurations.
+    ```
+    cp .env.example .env
+    vim .env
+    ```
 
-### Compile and Hot-Reload for Development
+    ```
+    VITE_CHAIN_ID = the ID of the blockchain which you deployed, like 0x539(5173) is for Ganache
+    VITE_SBT_ADDR = SBT contract's address
+    VITE_BANK_ADDR = Bank contract's address
+    VITE_BACKEND_PREFIX = Your backend server's prefix url: like http://192.168.0.102:5000
+    VITE_FRONTEND_PREFIX = You frontend's prefix: like http://192.168.0.112:5173
+    ```
+5. Compile and Hot-Reload for Development
+    ```
+    npm run dev
+    ```
 
-```sh
-npm run dev
-```
+    or you can Minify for Production
 
-### Compile and Minify for Production
+    ```
+    npm run build
+    ```
 
-```sh
-npm run build
-```
+## Project Setup (Backend)
+
+1. Run backend api server
+    ```
+    cd Credit-Card-System-web/backend
+    python main.py
+    ```
+
+## Usage
+
+After setting up the frontend and backend servers, you can open your browser and access the frontend page.
+
+Once the page is loaded, you can connect your MetaMask wallet and proceed to register and log in to the application.
