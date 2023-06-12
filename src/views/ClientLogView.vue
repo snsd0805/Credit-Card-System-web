@@ -47,9 +47,9 @@ export default {
     <div class="container">
       <div class="columns">
         <div class="column is-2">
-          <ClientNav path="shoplog"></ClientNav>
+          <ClientNav path="log"></ClientNav>
           <template v-if="this.$cookies.get('isShop') == 'true'">
-            <ShopNav path="shoplog"></ShopNav>
+            <ShopNav path="log"></ShopNav>
           </template>
 
         </div>

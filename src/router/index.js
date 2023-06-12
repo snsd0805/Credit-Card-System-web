@@ -13,6 +13,7 @@ import ShopPayQRcodeView from '../views/ShopPayQRcodeView.vue'
 import ShopLogView from '../views/ShopLogView.vue'
 import OrderView from '../views/OrderView.vue'
 import ClientLogView from '../views/ClientLogView.vue'
+import ClientRepayView from '../views/ClientRepayView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -86,6 +87,11 @@ const router = createRouter({
       path: '/client/log',
       name: 'log',
       component: ClientLogView
+    },
+    {
+      path: '/client/repay',
+      name: 'repay',
+      component: ClientRepayView
     },
   ]
 })

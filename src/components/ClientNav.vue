@@ -14,7 +14,8 @@ export default {
         pay: 'panel-block',
         credit: 'panel-block',
         info: 'panel-block',
-        log: 'panel-block'
+        log: 'panel-block',
+        repay: 'panel-block'
       }
     }
   }
@@ -58,6 +59,17 @@ export default {
       </template>
       <template v-else>
         <p>掃描支付</p>
+      </template>
+    </RouterLink>
+    <RouterLink to="/client/repay" :class="this.navCSS['repay']">
+      <span class="panel-icon">
+        <i class="fas fa-book" aria-hidden="true"></i>
+      </span>
+      <template v-if="this.path == 'repay'">
+        <strong>還款</strong>
+      </template>
+      <template v-else>
+        <p>還款</p>
       </template>
     </RouterLink>
     <RouterLink to="/client/log" :class="this.navCSS['log']">

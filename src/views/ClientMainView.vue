@@ -70,16 +70,13 @@ export default {
         <div class="column">
           <div class="container">
             <div class="block">
-              <PageTitle title="Set Credit Limit" subtitle="根據 SBT 信用紀錄設定額度"></PageTitle>
+              <PageTitle title="使用者選項" subtitle=""></PageTitle>
             </div>
             <div class="block">
-
               <div class="tile is-ancestor">
                 <div class="tile is-vertical is-8">
                   <div class="tile">
                     <div class="tile is-parent is-vertical">
-
-
                       <RouterLink to="/client/info" class="tile is-child notification is-info">
                         <article>
                           <p class="title"><i class="fas fa-user"></i> 個人資料</p>
@@ -89,6 +86,12 @@ export default {
                       <RouterLink to="/client/pay" class="tile is-child notification is-info">
                         <article>
                           <p class="title"><i class="fas fa-credit-card"></i> 掃描支付</p>
+                          <!-- <p class="subtitle">Top tile</p> -->
+                        </article>
+                      </RouterLink>
+                      <RouterLink to="/client/repay" class="tile is-child notification is-info">
+                        <article>
+                          <p class="title"><i class="fas fa-hand-holding-usd"></i> 還款</p>
                           <!-- <p class="subtitle">Top tile</p> -->
                         </article>
                       </RouterLink>
@@ -104,8 +107,20 @@ export default {
                           <!-- <p class="subtitle">Top tile</p> -->
                         </article>
                       </RouterLink>
-
-                      <template v-if="this.isShop">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="block">
+              <PageTitle title="店家選項" subtitle=""></PageTitle>
+            </div>
+            <template v-if="this.isShop">
+              <div class="block">
+                <div class="tile is-ancestor">
+                  <div class="tile is-vertical is-8">
+                    <div class="tile">
+                      <div class="tile is-parent is-vertical">
                         <RouterLink to="/shop/pay" class="tile is-child notification is-info">
                           <article>
                             <p class="title"><i class="fas fa-cash-register"></i> 店家結帳</p>
@@ -124,16 +139,12 @@ export default {
                             <!-- <p class="subtitle">Top tile</p> -->
                           </article>
                         </RouterLink>
-                      </template>
-
-
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-
-
-            </div>
+            </template>
           </div>
         </div>
       </div>
@@ -143,3 +154,4 @@ export default {
   <SuccessModal :active="successModalStatus" :successMsg="msg" @closeModal="successModalStatus = false"
     link="/signup/linksbt" btnName="繼續"></SuccessModal>
 </template>
+
