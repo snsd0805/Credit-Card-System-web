@@ -6,7 +6,7 @@ We have implemented a Crypto Credit Card System, and this repository focuses on 
 
 However, many functions have not been fully implemented, and there are still numerous security issues that need to be addressed.
 
-Additionally, You can find smart contract [here]()
+Additionally, You can find smart contract [here](https://github.com/snsd0805/Credit-Card-System-smartcontract)
 
 ## Recommended IDE Setup
 
@@ -18,7 +18,7 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup (Frontend)
 
-1. Deploy the contracts in the [smart contract repo]()
+1. Deploy the contracts in the [smart contract repo](https://github.com/snsd0805/Credit-Card-System-smartcontract)
 2. clone this repo
     ```
     git clone $THIS_REPO_LINK
