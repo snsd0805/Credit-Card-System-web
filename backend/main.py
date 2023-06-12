@@ -43,12 +43,18 @@ def process_data():
     filter_str = ', '.join(filter)
     query = "SELECT id, price FROM products WHERE id IN ({})".format(filter_str)
     cursor.execute(query, params)
-    prices = cursor.fetchall()
+    result = cursor.fetchall()
+    
+    prices = {}
+    for id, price in result:
+        prices[id] = price
 
     amount = 0
     for index, product in enumerate(data['products']):
+        id = product['product_id']
         count = int(product['count'])
-        amount += count * int(prices[index][1])
+        print(count * int(prices[id]))
+        amount += (count * int(prices[id]))
 
     cursor.execute('INSERT INTO "orders"("id","shop_id","client_addr","amount") VALUES (NULL,?,NULL,?);', (shop_id, amount))
     order_id = cursor.lastrowid

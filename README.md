@@ -69,5 +69,5 @@ Once the page is loaded, you can connect your MetaMask wallet and proceed to reg
 
 ## Some Demo Screenshots
 ![](img/Screenshot_20230612_225920.png)
-![](img/Screenshot_20230612_230551.png)
+![](img/Screenshot_20230612_234213.png)
 ![](img/Screenshot_20230612_230948.png)
