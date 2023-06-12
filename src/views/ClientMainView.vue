@@ -112,10 +112,10 @@ export default {
                 </div>
               </div>
             </div>
-            <div class="block">
-              <PageTitle title="店家選項" subtitle=""></PageTitle>
-            </div>
             <template v-if="this.isShop">
+              <div class="block">
+                <PageTitle title="店家選項" subtitle=""></PageTitle>
+              </div>
               <div class="block">
                 <div class="tile is-ancestor">
                   <div class="tile is-vertical is-8">
