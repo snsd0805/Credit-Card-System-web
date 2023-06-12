@@ -23,7 +23,7 @@ export default {
     this.web3.eth.defaultAccount = this.clientAddr
     this.token = new this.web3.eth.Contract(SBT, this.SBTAddress)
 
-    var borrow = await this.token.getPastEvents("Borrow", { fromBlock: 0, toBlock: 'latest', filter: { shop: this.clientAddr, bank: this.BankAddress } })
+    var borrow = await this.token.getPastEvents("Borrow", { fromBlock: 0, toBlock: 'latest', filter: { client: this.clientAddr, bank: this.BankAddress } })
     console.log(borrow)
     for (let i of borrow) {
       let result = i.returnValues
@@ -56,7 +56,7 @@ export default {
         <div class="column">
           <div class="container">
             <div class="block">
-              <PageTitle title="店家收款紀錄" subtitle="查詢客戶付款狀況"></PageTitle>
+              <PageTitle title="借款紀錄" subtitle="查詢透過本銀行進行支付的所有紀錄"></PageTitle>
             </div>
             <div class="block">
               <h1 class="title is-4">收款紀錄</h1>
@@ -64,7 +64,7 @@ export default {
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>客戶</th>
+                    <th>店家</th>
                     <th>銀行</th>
                     <th>帳款編號</th>
                     <th>金額</th>
@@ -75,7 +75,7 @@ export default {
                   <template v-for="(value, index) of log">
                     <tr>
                       <th>{{ index }}</th>
-                      <td>{{ value.client }}</td>
+                      <td>{{ value.shop }}</td>
                       <td>{{ value.bank }}</td>
                       <td>#{{ value.id }}</td>
                       <td>{{ value.amount }} ETH</td>

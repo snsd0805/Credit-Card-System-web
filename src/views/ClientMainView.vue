@@ -92,9 +92,15 @@ export default {
                           <!-- <p class="subtitle">Top tile</p> -->
                         </article>
                       </RouterLink>
+                      <RouterLink to="/client/log" class="tile is-child notification is-info">
+                        <article>
+                          <p class="title"><i class="fas fa-history"></i> 借款紀錄</p>
+                          <!-- <p class="subtitle">Top tile</p> -->
+                        </article>
+                      </RouterLink>
                       <RouterLink to="/client/credit" class="tile is-child notification is-info">
                         <article>
-                          <p class="title"><i class="fas fa-history"></i> 信用紀錄</p>
+                          <p class="title"><i class="fas fa-cubes"></i> SBT信用紀錄</p>
                           <!-- <p class="subtitle">Top tile</p> -->
                         </article>
                       </RouterLink>
@@ -102,19 +108,19 @@ export default {
                       <template v-if="this.isShop">
                         <RouterLink to="/shop/pay" class="tile is-child notification is-info">
                           <article>
-                            <p class="title"><i class="fas fa-history"></i> 店家結帳</p>
+                            <p class="title"><i class="fas fa-cash-register"></i> 店家結帳</p>
                             <!-- <p class="subtitle">Top tile</p> -->
                           </article>
                         </RouterLink>
                         <RouterLink to="/shop/log" class="tile is-child notification is-info">
                           <article>
-                            <p class="title"><i class="fas fa-history"></i> 店家收款紀錄</p>
+                            <p class="title"><i class="fas fa-receipt"></i> 店家收款紀錄</p>
                             <!-- <p class="subtitle">Top tile</p> -->
                           </article>
                         </RouterLink>
                         <RouterLink to="/shop/products" class="tile is-child notification is-info">
                           <article>
-                            <p class="title"><i class="fas fa-history"></i> 店家商品管理</p>
+                            <p class="title"><i class="fas fa-box-open"></i> 店家商品管理</p>
                             <!-- <p class="subtitle">Top tile</p> -->
                           </article>
                         </RouterLink>

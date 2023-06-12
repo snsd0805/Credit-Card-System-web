@@ -14,6 +14,7 @@ export default {
         pay: 'panel-block',
         credit: 'panel-block',
         info: 'panel-block',
+        log: 'panel-block'
       }
     }
   }
@@ -59,15 +60,26 @@ export default {
         <p>掃描支付</p>
       </template>
     </RouterLink>
+    <RouterLink to="/client/log" :class="this.navCSS['log']">
+      <span class="panel-icon">
+        <i class="fas fa-book" aria-hidden="true"></i>
+      </span>
+      <template v-if="this.path == 'log'">
+        <strong>借款紀錄</strong>
+      </template>
+      <template v-else>
+        <p>借款紀錄</p>
+      </template>
+    </RouterLink>
     <RouterLink to="/client/credit" :class="this.navCSS['credit']">
       <span class="panel-icon">
         <i class="fas fa-book" aria-hidden="true"></i>
       </span>
       <template v-if="this.path == 'credit'">
-        <strong>信用紀錄</strong>
+        <strong>SBT信用紀錄</strong>
       </template>
       <template v-else>
-        <p>信用紀錄</p>
+        <p>SBT信用紀錄</p>
       </template>
     </RouterLink>
   </nav>
