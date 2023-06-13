@@ -10,7 +10,7 @@ from telegram.ext import MessageHandler, CallbackContext, CommandHandler, Filter
 import json
 import os
 
-TOKEN = "6207011315:AAH-J0zjPPd_mDPN1_pCgll0w-pZtlJXYVY"
+TOKEN = ""
 
 class BankBot():
     def __init__(self):
@@ -19,6 +19,7 @@ class BankBot():
         self.dispatcher.add_handler(CommandHandler('start',   self.start))
         self.dispatcher.add_handler(CommandHandler('add',   self.add))
         self.dispatcher.add_handler(MessageHandler(Filters.text, self.echo))
+        self.clients = {}
 
         if os.path.isfile('./client.json'):
             with open("client.json") as fp:
@@ -43,7 +44,7 @@ class BankBot():
             self.clients[address] = update.effective_chat.id
             with open('client.json', 'w') as fp:
                 json.dump(self.clients, fp)
-            context.bot.send_message(chat_id=update.effective_chat.id, text="開始追蹤 {} 的商店收款通知".format(address))
+            context.bot.send_message(chat_id=update.effective_chat.id, text="開始追蹤 {} 的出入帳通知".format(address))
 
     def start(self, update, context):
         context.bot.send_message(chat_id=update.effective_chat.id, text="Hi, 這是暨大區塊鏈銀行 Telegram Bot\n\n/add YOUR_ADDRESS: 追蹤出入帳通知")

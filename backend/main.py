@@ -5,6 +5,7 @@ from flask_cors import CORS
 from bot import BankBot
 import time
 import threading
+from blockchain_listener import Listener
 
 app = Flask(__name__)
 CORS(app)
@@ -182,3 +183,6 @@ if __name__ == '__main__':
 
     flask_thread = threading.Thread(target=start_flask)
     flask_thread.start()
+
+    listener = Listener(bot)
+    listener.start()
