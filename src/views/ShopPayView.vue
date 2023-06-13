@@ -67,6 +67,7 @@ export default {
       console.log(`Code matched = ${decodedText}`, decodedResult);
       if (decodedText in this.products){
         var product = this.products[decodedText]
+        this.scanner.clear()
         this.productCar.push({
           'name': product['name'],
           'id': product['id'],
@@ -74,10 +75,10 @@ export default {
           'count': 1
         })
       } else {
+        this.scanner.clear()
         this.msg = "商品列表中沒有這項商品："+decodedText
         this.warningModalStatus = true
       }
-      this.scanner.clear()
     },
     scan() {
       this.scanner = new Html5QrcodeScanner(
