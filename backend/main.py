@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 import sqlite3
 import os
 from flask_cors import CORS
+from bot import BankBot
 
 app = Flask(__name__)
 CORS(app)
@@ -165,9 +166,17 @@ def add_products(address):
                    (shop_id, product['name'], product['code'], product['price']))
     db.commit()
     db.close()
+    
     return jsonify({'status': 'OK'})
+
 
 
 if __name__ == '__main__':
     initDB()
+    
     app.run(host="0.0.0.0")
+
+    print("start the bot...")
+    bot = BankBot()
+    bot.start_polling()
+    bot.application.idle()
