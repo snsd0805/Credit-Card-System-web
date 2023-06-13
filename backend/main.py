@@ -3,6 +3,8 @@ import sqlite3
 import os
 from flask_cors import CORS
 from bot import BankBot
+import time
+import threading
 
 app = Flask(__name__)
 CORS(app)
@@ -169,14 +171,14 @@ def add_products(address):
     
     return jsonify({'status': 'OK'})
 
-
+def start_flask():
+    app.run(host="0.0.0.0")
 
 if __name__ == '__main__':
     initDB()
-    
-    app.run(host="0.0.0.0")
-
-    print("start the bot...")
     bot = BankBot()
+    print("start polling...")
     bot.start_polling()
-    bot.application.idle()
+
+    flask_thread = threading.Thread(target=start_flask)
+    flask_thread.start()

@@ -1,18 +1,24 @@
+'''
+    python-telegram-bot: 13.7, version 20.XX cannot work
+'''
+
 from urllib import response
 from cairo import Filter
 from telegram import Update
 import torch
-from telegram.ext import MessageHandler, CallbackContext, CommandHandler, filters, Application
+from telegram.ext import MessageHandler, CallbackContext, CommandHandler, Filters, Updater
 import json
 import os
 
-TOKEN = ""
+TOKEN = "6207011315:AAH-J0zjPPd_mDPN1_pCgll0w-pZtlJXYVY"
 
 class BankBot():
     def __init__(self):
-        self.application = Application.builder().token(TOKEN).build()
-        self.application.add_handler(CommandHandler('shop', self.addShop))
-        self.application.add_handler(MessageHandler(filters.ALL, self.response))
+        self.updater = Updater(TOKEN, use_context=True)
+        self.dispatcher = self.updater.dispatcher
+        self.dispatcher.add_handler(CommandHandler('start',   self.start))
+        self.dispatcher.add_handler(CommandHandler('add',   self.add))
+        self.dispatcher.add_handler(MessageHandler(Filters.text, self.echo))
 
         if os.path.isfile('./client.json'):
             with open("client.json") as fp:
@@ -21,28 +27,23 @@ class BankBot():
             self.clients = {}
 
     def start_polling(self):
-        print("start...")
-        self.application.run_polling()
-        
-    async def response(self, update, context):
-        q = update.message.text
-        
-        await context.bot.send_message(
-            chat_id=update.effective_chat.id,
-            text="我看不懂這個 {} 指令".format(q)
-        )
+        self.updater.start_polling()
 
-    async def addShop(self, update, context):
+    def echo(self, update, context):
+        message = update.message.text
+        context.bot.send_message(chat_id=update.effective_chat.id, text="我看不懂 {} 指令".format(message))
+
+    def add(self, update, context):
         args = context.args
+
         if len(args) != 1:
-            await context.bot.send_message(
-                chat_id=update.effective_chat.id,
-                text="usage: /shop [YOUR_ADDRESS]"    
-            )
+            context.bot.send_message(chat_id=update.effective_chat.id, text="usage: /start YOUR_ADDRESS")
         else:
             address = args[0]
-            this.client[address] = update.effective_chat.id
-            await context.bot.send_message(
-                chat_id=update.effective_chat.id,
-                text="已經設定 {} 的店家收款通知！"
-            )
+            self.clients[address] = update.effective_chat.id
+            with open('client.json', 'w') as fp:
+                json.dump(self.clients, fp)
+            context.bot.send_message(chat_id=update.effective_chat.id, text="開始追蹤 {} 的商店收款通知".format(address))
+
+    def start(self, update, context):
+        context.bot.send_message(chat_id=update.effective_chat.id, text="Hi, 這是暨大區塊鏈銀行 Telegram Bot\n\n/add YOUR_ADDRESS: 追蹤出入帳通知")
