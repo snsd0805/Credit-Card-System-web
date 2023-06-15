@@ -73,4 +73,4 @@ Once the page is loaded, you can connect your MetaMask wallet and proceed to reg
 ![](img/Screenshot_20230612_230948.png)
 
 ## Demo Video
-<iframe width="560" height="315" src="https://www.youtube.com/embed/h0zxH_ZL-Iw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+[YouTube](https://youtu.be/h0zxH_ZL-Iw)
